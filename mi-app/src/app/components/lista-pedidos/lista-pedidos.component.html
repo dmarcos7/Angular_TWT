@@ -1,0 +1,29 @@
+<div [ngClass]="estadoListadoPedidos">
+
+    <h2>LISTA DE PEDIDOS</h2>
+
+
+    <div *ngIf="pedidos.length===0">No Hay Pedidos</div>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">USUARIO</th>
+                <th scope="col">DESCRIPCION</th>
+                <th scope="col">FECHA PEDIDO</th>
+                <th scope="col">ENTREGADO</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let pedido of pedidos">
+            <tr>
+                <th scope="row">{{pedido.id}}</th>
+                <td>{{pedido.usuario}}</td>
+                <td>{{pedido.descripcion}}</td>
+                <td>{{pedido.fechaPedido | date:'short':'UTC':'es'}}</td>
+                <td class="{{pedido.entregado ? 'table-success':''}}">{{pedido.entregado}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <button class="btn btn-primary" (click)="onAltaPedido()">Alta Producto</button>
+</div>

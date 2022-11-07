@@ -1,0 +1,38 @@
+<h2>Detalle del PEDIDO</h2>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        ID: {{pedido.id}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Descripcion: {{pedido.descripcion}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Usuario: {{pedido.usuario}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Fecha Pedido: {{pedido.fechaPedido | date}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div *ngIf="pedido.entregado; else noEntregado">Entregado: SI</div>
+        <ng-template #noEntregado>Entregado: NO</ng-template>
+      </div>
+    </div>
+</div>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
