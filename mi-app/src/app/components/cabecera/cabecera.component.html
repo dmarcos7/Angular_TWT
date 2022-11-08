@@ -1,5 +1,18 @@
-<header>
-    <h1>{{titulo}}</h1>
-</header>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}"
+      >Listado Pedidos</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="/pedido" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}"
+      >Detalle Pedido</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/pedido/alta" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}"
+>Alta Pedido</a>
+    </li>
+  </ul>
+
 
 

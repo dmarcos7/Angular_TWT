@@ -50,4 +50,21 @@ export class PedidoService {
       
     });
    }
+
+   public getById(id: number):Pedido{
+    let i = 0;
+    let encontrado = false;
+    var pedido!: Pedido;
+    while(i<this.pedidos.length && !encontrado){
+      if(this.pedidos[i].id == id){
+        encontrado = true;
+        pedido = this.pedidos[i];
+        
+      }else{
+        i++;
+      }
+    }
+    return pedido;
+   }
+  
 }

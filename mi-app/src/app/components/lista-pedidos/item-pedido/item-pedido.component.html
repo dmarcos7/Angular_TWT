@@ -4,5 +4,13 @@
     <td>{{descripcion}}</td>
     <td>{{fechaPedido | date:'short':'UTC':'es'}}</td>
     <td class="{{entregado ? 'table-success':''}}">{{entregado}}</td>
-    <button (click)="onEntregarPedido()" class="btn btn-primary" [disabled]="entregado">Entregar</button>
+    <div class="row">
+        <div class="col-6">
+            <button (click)="onEntregarPedido()" class="btn btn-primary" [disabled]="entregado">Entregar</button>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-primary" [routerLink]="['/pedido/', id]">IR</a>
+        </div>   
+     </div>
+    
 </tr>

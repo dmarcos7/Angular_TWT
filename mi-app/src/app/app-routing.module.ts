@@ -4,7 +4,15 @@ import { DetallePedidoComponent } from './components/lista-pedidos/detalle-pedid
 import { EditarPedidoComponent } from './components/lista-pedidos/editar-pedido/editar-pedido.component';
 import { ListaPedidosComponent } from './components/lista-pedidos/lista-pedidos.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+ 
+  {path:'', component:ListaPedidosComponent},
+  {path: 'pedido', component: DetallePedidoComponent},
+  {path:'pedido/alta', component: EditarPedidoComponent},
+  {path:'pedido/:id', component: DetallePedidoComponent},
+  
+  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -12,9 +20,4 @@ const routes: Routes = [];
 })
 
 export class AppRoutingModule {
-  routes: Routes = [
-    { path: 'detalle-pedido', component: DetallePedidoComponent },
-    {path:'listaPedidos', component:ListaPedidosComponent},
-    {path:'editarPedido', component: EditarPedidoComponent}
-  ]
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from 'src/app/model/pedido';
 import { LogService } from 'src/app/servicios/log.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
@@ -17,7 +18,7 @@ export class ListaPedidosComponent implements OnInit {
   estadoListadoPedidos: String = 'noEntregado';
   modoNuevo: boolean = true;
 
-  constructor(private log: LogService, private pedidosService: PedidoService) {
+  constructor(private log: LogService, private pedidosService: PedidoService, private router:Router) {
     this.pedidos = this.pedidosService.getAll();
   }
 
@@ -26,6 +27,7 @@ export class ListaPedidosComponent implements OnInit {
 
   public onAltaPedido(): void {
     this.log.info('Yendo a la pagina del alta');
+    this.router.navigate(['/pedido/alta'])
   }
 
   onTerminoEntrega(id: number) {

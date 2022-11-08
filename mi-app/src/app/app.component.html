@@ -1,12 +1,16 @@
-
 <!--title variable puesta en app.components.ts-->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!--componente cabecera-->
+            
+            <app-cabecera></app-cabecera>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
 
-<!--componente cabecera-->
-<app-cabecera></app-cabecera>
-<!--componente para la lista-->
-<app-lista-pedidos></app-lista-pedidos>
-<!--DETALLE DEL PEDIDO-->
-<app-detalle-pedido></app-detalle-pedido>
-<!--ALTA MODIFICACION-->
-<app-editar-pedido></app-editar-pedido>
-<!--FOOTER-->
