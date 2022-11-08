@@ -9,17 +9,21 @@ import { DetallePedidoComponent } from './components/lista-pedidos/detalle-pedid
 import { EditarPedidoComponent } from './components/lista-pedidos/editar-pedido/editar-pedido.component';
 import localeES from '@angular/common/locales/es';
 import {registerLocaleData} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ItemPedidoComponent } from './components/lista-pedidos/item-pedido/item-pedido.component';
 @NgModule({
   declarations: [ //declaracion de los componentes
     AppComponent,
     CabeceraComponent,
     ListaPedidosComponent,
     DetallePedidoComponent,
-    EditarPedidoComponent
+    EditarPedidoComponent,
+    ItemPedidoComponent
   ],
   imports: [//declaracion de los mododulos
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-timer',
@@ -10,15 +11,32 @@ export class TimerComponent implements OnInit {
   seconds: number = 59;
   isPaused: boolean = false;
   buttonLabel: String ='Pause';
-  constructor() {
+  timeout: number = 24;
+  languageCode: string ='es';
+  localizedLabelMap: any ={
+    'en':'Start Timer',
+    'es': 'Comenzar temporizador',
+    'fr': 'Demarrer une sequence',
+    'other': 'Start Timer'
+  };
+
+  localizedLabelMap2: any ={
+    'en':'Pause Timer',
+    'es': 'Parar temporizador',
+    'fr': 'Baggette une sequence',
+    'other': 'Pause Timer'
+  };
+  constructor(private settingsService: SettingsService) {
     this.reset();
+    this.timeout = this.settingsService.timerTimeOut;
     setInterval(() => this.tick(), 1000);
   }
 
   reset() {
-    this.minutes = 24;
+    this.minutes = this.settingsService.timerMinutes -1;
     this.seconds = 59;
     this.buttonLabel = 'Start';
+    this.togglePause();
   }
 
   private tick() {
@@ -41,6 +59,10 @@ export class TimerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onCountdownCompleted(){
+    alert('Time Up!!');
   }
 
 }

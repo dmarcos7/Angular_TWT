@@ -1,0 +1,8 @@
+<tr class="row">
+    <th scope="row">{{id}}</th>
+    <td>{{usuario}}</td>
+    <td>{{descripcion}}</td>
+    <td>{{fechaPedido | date:'short':'UTC':'es'}}</td>
+    <td class="{{entregado ? 'table-success':''}}">{{entregado}}</td>
+    <button (click)="onEntregarPedido()" class="btn btn-primary" [disabled]="entregado">Entregar</button>
+</tr>

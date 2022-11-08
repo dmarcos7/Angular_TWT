@@ -3,6 +3,26 @@
     <h1>{{minutes}}:{{seconds | number: '2.0'}}</h1>
 
     <p>
-        <button class="btn btn-primary" (click)="togglePause()">{{buttonLabel}}</button>
+        <button class="btn btn-primary" (click)="togglePause()">
+            <label *ngIf="isPaused; else noPausado" for="">{{languageCode | i18nSelect:localizedLabelMap}}</label>
+            <ng-template #noPausado>{{languageCode | i18nSelect:localizedLabelMap2}}</ng-template>
+        </button>
     </p>
+</div>
+<div class="container text-center">
+    <app-countdown-timer #counter (complete)="onCountdownCompleted()" [seconds]="timeout">
+    </app-countdown-timer>
+    <p>
+        <button class="btn btn-primary" (click)="counter.seconds = 25">
+            Reset
+        </button>
+    </p>
+    <div>
+        <p *ngIf="counter.seconds<10">
+
+            Beware! Only <strong>{{counter.seconds}} seconds</strong>
+        </p>
+        <p *ngIf="timeout === 0">Time Up!!</p>
+    </div>
+
 </div>

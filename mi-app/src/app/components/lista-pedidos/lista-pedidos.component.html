@@ -15,15 +15,17 @@
             </tr>
         </thead>
         <tbody *ngFor="let pedido of pedidos">
-            <tr>
-                <th scope="row">{{pedido.id}}</th>
+           
+               <!-- <th scope="row">{{pedido.id}}</th>
                 <td>{{pedido.usuario}}</td>
                 <td>{{pedido.descripcion}}</td>
                 <td>{{pedido.fechaPedido | date:'short':'UTC':'es'}}</td>
                 <td class="{{pedido.entregado ? 'table-success':''}}">{{pedido.entregado}}</td>
-            </tr>
+                -->
+                <app-item-pedido  (entregaRealizada)="onTerminoEntrega($event)" [id]="pedido.id" descripcion="{{pedido.descripcion}}" [entregado]="pedido.entregado"></app-item-pedido>
+
         </tbody>
 
     </table>
-    <button class="btn btn-primary" (click)="onAltaPedido()">Alta Producto</button>
+    <button class="btn btn-primary" (click)="onAltaPedido()" [disabled]="modoNuevo">Alta Producto</button>
 </div>
