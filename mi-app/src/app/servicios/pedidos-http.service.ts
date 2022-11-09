@@ -33,11 +33,11 @@ export class PedidosHttpService {
   //delete
   public delete(id:number):Observable<never>{
     const url = this.urlBase + "/pedidos/borrar/"+id;
-    return this.http.delete<never>(url, this.httpOptions);
+    return this.http.delete<never>(url);
   }
   //update
-  public update(id:number):Observable<Pedido>{
-    const url = this.urlBase + "/pedidos/modificar/"+id;
-    return this.http.get<Pedido>(url, this.httpOptions);
+  public update(p:Pedido):Observable<Pedido>{
+    const url = this.urlBase + "/pedidos/modificar/"+p.id;
+    return this.http.put<Pedido>(url, p, this.httpOptions);
   }
 }

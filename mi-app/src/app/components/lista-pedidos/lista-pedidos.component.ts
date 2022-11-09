@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Pedido } from 'src/app/model/pedido';
 import { LogService } from 'src/app/servicios/log.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
+import { PedidosHttpService } from 'src/app/servicios/pedidos-http.service';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -18,8 +19,10 @@ export class ListaPedidosComponent implements OnInit {
   estadoListadoPedidos: String = 'noEntregado';
   modoNuevo: boolean = true;
 
-  constructor(private log: LogService, private pedidosService: PedidoService, private router:Router) {
-    this.pedidos = this.pedidosService.getAll();
+  constructor(private log: LogService, private pedidosService: PedidosHttpService, private router:Router) {
+  this.pedidosService.getAll().subscribe((lista:Pedido[])=>{
+      this.pedidos = lista;
+    });
   }
 
   ngOnInit(): void {
@@ -32,7 +35,9 @@ export class ListaPedidosComponent implements OnInit {
 
   onTerminoEntrega(id: number) {
     console.log('me notifica que ha cambiado la movida');
-    this.pedidos= this.pedidosService.getAll();
+    this.pedidosService.getAll().subscribe((lista:Pedido[])=>{
+      this.pedidos = lista;
+    });
   }
 
 }
