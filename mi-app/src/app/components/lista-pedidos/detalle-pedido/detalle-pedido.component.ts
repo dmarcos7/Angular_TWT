@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Params, Route, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Pedido } from 'src/app/model/pedido';
 import { LogService } from 'src/app/servicios/log.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
@@ -11,6 +12,7 @@ import { PedidoService } from 'src/app/servicios/pedido.service';
 })
 export class DetallePedidoComponent implements OnInit {
   pedido: Pedido;
+  paramsSubscription: Subscription;
   constructor(private router:ActivatedRoute, private pedidosService: PedidoService) { 
     this.pedido = {
       id: 1,
@@ -25,7 +27,11 @@ export class DetallePedidoComponent implements OnInit {
       this.pedido = pedidosService.getById(id);
     }
     
-    
+    this.paramsSubscription = this.router.params.subscribe(
+      (params: Params)=>{
+        this.pedido = this.pedidosService.getById(params['id']);
+      }//fin de la funcion
+    );
 
     
   }

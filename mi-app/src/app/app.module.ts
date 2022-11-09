@@ -11,6 +11,7 @@ import localeES from '@angular/common/locales/es';
 import {registerLocaleData} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ItemPedidoComponent } from './components/lista-pedidos/item-pedido/item-pedido.component';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [ //declaracion de los componentes
     AppComponent,
@@ -23,7 +24,8 @@ import { ItemPedidoComponent } from './components/lista-pedidos/item-pedido/item
   imports: [//declaracion de los mododulos
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
