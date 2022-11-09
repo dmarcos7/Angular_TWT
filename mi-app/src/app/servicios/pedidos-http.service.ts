@@ -31,10 +31,13 @@ export class PedidosHttpService {
     return this.http.post<Pedido>(url, pedido, this.httpOptions);
   }
   //delete
-  public delete(id:number):Observable<Pedido>{
+  public delete(id:number):Observable<never>{
     const url = this.urlBase + "/pedidos/borrar/"+id;
-    return this.http.delete<Pedido>(url, this.httpOptions);
+    return this.http.delete<never>(url, this.httpOptions);
   }
   //update
-
+  public update(id:number):Observable<Pedido>{
+    const url = this.urlBase + "/pedidos/modificar/"+id;
+    return this.http.get<Pedido>(url, this.httpOptions);
+  }
 }
